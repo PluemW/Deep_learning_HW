@@ -18,7 +18,7 @@ class Linear:
         # W is weight matrix: array of shape (D_o, D_i)
         # b is bias vector: array of shape (D_o, 1)
         ### START CODE HERE ### (≈ 1 line of code)
-        # He initialization (gain=2, mode=fan_in)
+        He initialization (gain=2, mode=fan_in)
         self.W = pass * torch.randn((D_o, D_i))  
         ### END CODE HERE ###
         self.b = torch.zeros(D_o, 1)
