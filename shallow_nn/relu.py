@@ -20,7 +20,7 @@ class ReLU:
         :return: post-activation
         """
         ### START CODE HERE ### (≈ 1 line of code)
-        H = pass
+        H = torch.maximum(F, torch.tensor(0.0))
         ###  END CODE HERE  ###
 
         if training:
@@ -38,7 +38,8 @@ class ReLU:
         """
 
         ### START CODE HERE ### (≈ 1 lines of code)
-        dF = pass
+        dF = dH.clone() 
+        dF[self.F < 0] = 0
         ### END CODE HERE ###
 
         assert (dF.shape == self.F.shape)

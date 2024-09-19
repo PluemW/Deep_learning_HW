@@ -18,8 +18,8 @@ class Linear:
         # W is weight matrix: array of shape (D_o, D_i)
         # b is bias vector: array of shape (D_o, 1)
         ### START CODE HERE ### (≈ 1 line of code)
-        He initialization (gain=2, mode=fan_in)
-        self.W = pass * torch.randn((D_o, D_i))  
+        # He initialization (gain=2, mode=fan_in)
+        self.W = np.sqrt(2.0 / D_i) * torch.randn((D_o, D_i))  
         ### END CODE HERE ###
         self.b = torch.zeros(D_o, 1)
 
@@ -38,7 +38,7 @@ class Linear:
         """
 
         ### START CODE HERE ### (≈ 1 line of code)
-        F = pass
+        F = self.W @ H + self.b
         ### END CODE HERE ###
 
         assert(F.shape == (self.W.shape[0], H.shape[1]))
@@ -57,9 +57,9 @@ class Linear:
         """
 
         ### START CODE HERE ### (≈ 3 lines of code)
-        dW = pass
-        db = pass
-        dH = pass
+        dW = dF @ self.H.T / self.H.shape[1] 
+        db = torch.sum(dF, dim=1, keepdim=True) / self.H.shape[1]  
+        dH = self.W.T @ dF
         ### END CODE HERE ###
 
         self.dW = dW.clone()

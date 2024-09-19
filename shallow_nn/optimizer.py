@@ -26,8 +26,8 @@ class SGD:
         for layer in self.layers:
             if isinstance(layer, Linear):
                 ### START CODE HERE ### (≈ 2 line of code)
-                layer.W = pass
-                layer.b = pass
+                layer.W -= self.learning_rate * layer.dW  
+                layer.b -= self.learning_rate * layer.db
                 ### END CODE HERE ###
 
 

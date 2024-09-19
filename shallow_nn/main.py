@@ -57,7 +57,7 @@ for epoch in range(num_epochs):
 
         # Gradient update
         ### START CODE HERE ### (≈ 1 line of code)
-        pass
+        sgd.step()
         ### END CODE HERE ###
 
         # Compute accuracy (for debugging)

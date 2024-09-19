@@ -22,7 +22,7 @@ class CELoss:
         """
 
         ### START CODE HERE ### (≈ 1-2 lines of code)
-        loss = pass
+        loss = -torch.sum(Y * torch.log(torch.softmax(F, dim=0) + 1e-9)) / Y.shape[1]
         ### END CODE HERE ###
 
         assert(Y.shape == F.shape)
@@ -39,7 +39,7 @@ class CELoss:
         """
 
         ### START CODE HERE ### (≈ 1 lines of code)
-        dF = pass
+        dF = (torch.softmax(self.F, dim=0) - self.Y) / self.Y.shape[1]
         ### END CODE HERE ###
 
         return dF

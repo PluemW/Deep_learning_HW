@@ -56,7 +56,7 @@ class ShallowNeuralNet:
 
         for layer in self.layers:
             ### START CODE HERE ### (≈ 1 line of code)
-            X = pass
+            X = layer(X, training=training) 
             ### END CODE HERE ###
 
         return X
@@ -70,7 +70,7 @@ class ShallowNeuralNet:
 
         for layer in reversed(self.layers):
             ### START CODE HERE ### (≈ 1 line of code)
-            dF = pass
+            dF = layer.backward(dF) 
             ### END CODE HERE ###
 
         return None
